@@ -1,5 +1,3 @@
-const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
-
 import {
   Activity,
   Baby,
@@ -49,14 +47,10 @@ export const isOpenNow = (now = new Date()) => {
 };
 
 export const IMAGES = {
-  architecture:
-    'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/a6fc60b3f_generated_image.png',
-  lounge:
-    'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/46255c1e2_generated_image.png',
-  instrument:
-    'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/949c6fa1d_generated_image.png',
-  clinician:
-    'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/78947bbeb_generated_image.png',
+  architecture: '/images/architecture.png',
+  lounge: '/images/lounge.png',
+  instrument: '/images/instrument.png',
+  clinician: '/images/clinician.png',
 };
 
 export const PROMISES = [
@@ -183,7 +177,7 @@ export const TEAM = [
     name: 'Dr. Julian Vance, DDS, FAGD',
     role: 'Chief Cosmetic & Reconstructive Surgeon',
     bio: 'Fellow of the Academy of General Dentistry with 16 years specializing in minimally invasive aesthetic restorations.',
-    image: 'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/65774998a_generated_image.png',
+    image: '/images/doctor-julian.png',
     education: [
       'DDS, University of California San Francisco',
       'Fellowship, Academy of General Dentistry (FAGD)',
@@ -199,7 +193,7 @@ export const TEAM = [
     name: 'Dr. Maya Lin, DMD, MS',
     role: 'Orthodontics & Facial Orthopedics Specialist',
     bio: 'Harvard School of Dental Medicine alumna dedicated to airway-friendly clear aligner therapies.',
-    image: 'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/2703c4de9_generated_image.png',
+    image: '/images/doctor-maya.png',
     education: [
       'DMD, Harvard School of Dental Medicine',
       'MS in Oral Biology, UCLA',
@@ -235,8 +229,7 @@ export const VOICES = [
 ];
 
 export const TECH = {
-  backdrop:
-    'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/ae440fdb5_generated_image.png',
+  backdrop: '/images/tech-backdrop.png',
   cards: [
     {
       icon: ScanLine,
@@ -296,8 +289,8 @@ export const TRANSFORMATIONS = [
     concern: 'Enamel discoloration & mild crowding',
     solution: '6 Minimal-Prep Ceramic Veneers',
     timeframe: 'Completed in 2 appointments',
-    before: 'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/8bdb5332c_generated_image.png',
-    after: 'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/1ed21abcc_generated_image.png',
+    before: '/images/veneers-before.png',
+    after: '/images/veneers-after.png',
     beforeLabel: 'Before Treatment',
     afterLabel: 'After Treatment',
   },
@@ -307,8 +300,8 @@ export const TRANSFORMATIONS = [
     concern: 'Crowded lower arch & staining',
     solution: 'Invisalign aligners + in-chair whitening',
     timeframe: 'Completed in 9 months',
-    before: 'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/98bb845d4_generated_image.png',
-    after: 'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/df7846505_generated_image.png',
+    before: '/images/invisalign-before.png',
+    after: '/images/invisalign-after.png',
     beforeLabel: 'Before Treatment',
     afterLabel: 'After Treatment',
   },
@@ -318,8 +311,8 @@ export const TRANSFORMATIONS = [
     concern: 'Missing lateral incisor',
     solution: 'Titanium implant + ceramic crown',
     timeframe: 'Completed in 4 months',
-    before: 'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/1963e0c05_generated_image.png',
-    after: 'https://media.base44.com/images/public/6aca014128f76a12771ec9c5/0b83fab35_generated_image.png',
+    before: '/images/implant-before.png',
+    after: '/images/implant-after.png',
     beforeLabel: 'Before Treatment',
     afterLabel: 'After Treatment',
   },
