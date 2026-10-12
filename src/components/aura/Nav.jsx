@@ -10,9 +10,9 @@ import { cn } from '@/lib/utils';
 export const NAV_LINKS = [
   { id: 'treatments', label: 'Treatments' },
   { id: 'approach', label: 'Technology' },
-  { id: 'voices', label: 'Transformations' },
-  { id: 'team', label: 'Doctors' },
   { id: 'journey', label: 'Patient Comfort' },
+  { id: 'transformations', label: 'Transformations' },
+  { id: 'team', label: 'Doctors' },
 ];
 
 export const RESERVE_HREF = whatsappHref('Hello Aura, I would like to reserve an appointment.');
@@ -73,6 +73,7 @@ export default function Nav() {
               <a
                 key={link.id}
                 href={`#${link.id}`}
+                onClick={() => setActive(link.id)}
                 className={cn(
                   'relative px-2 py-2 text-xs transition-colors duration-200 hover:text-foreground lg:px-4 lg:text-sm',
                   active === link.id ? 'text-foreground' : 'text-muted-foreground',

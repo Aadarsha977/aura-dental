@@ -7,6 +7,7 @@ const LINKS = [
   { label: 'Treatments', href: '#treatments' },
   { label: 'Technology', href: '#approach' },
   { label: 'Patient comfort', href: '#journey' },
+  { label: 'Transformations', href: '#transformations' },
   { label: 'Doctors', href: '#team' },
   { label: 'Visit us', href: '#visit' },
 ];
