@@ -50,6 +50,16 @@ export default function TransformationSlider() {
     };
   }, [isDragging, pos]);
 
+  // Preload all case images on mount so transitions are instant
+  useEffect(() => {
+    TRANSFORMATIONS.forEach((c) => {
+      const imgBefore = new window.Image();
+      imgBefore.src = c.before;
+      const imgAfter = new window.Image();
+      imgAfter.src = c.after;
+    });
+  }, []);
+
   // reset divider when switching cases
   useEffect(() => {
     pos.set(50);
@@ -102,21 +112,32 @@ export default function TransformationSlider() {
               isDragging ? 'cursor-grabbing' : 'cursor-grab',
             )}
           >
-            {/* After (base layer, right half) */}
-            <div className="pointer-events-none absolute inset-0">
-              <Image src={active.after} alt={active.afterLabel} fittingType="fill" className="h-full w-full object-cover" />
-            </div>
+            {/* Pre-rendered stacked cases for zero-lag instant transitions */}
+            {TRANSFORMATIONS.map((c, i) => (
+              <div
+                key={c.tab}
+                className={cn(
+                  'pointer-events-none absolute inset-0 transition-opacity duration-300 ease-in-out',
+                  i === activeCase ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                )}
+              >
+                {/* After (base layer, right half) */}
+                <div className="absolute inset-0">
+                  <Image src={c.after} alt={c.afterLabel} fittingType="fill" className="h-full w-full object-cover" />
+                </div>
 
-            {/* Before (clipped, left half) */}
-            <motion.div style={{ clipPath: clipBefore }} className="pointer-events-none absolute inset-0">
-              <Image src={active.before} alt={active.beforeLabel} fittingType="fill" className="h-full w-full object-cover" />
-            </motion.div>
+                {/* Before (clipped, left half) */}
+                <motion.div style={{ clipPath: clipBefore }} className="absolute inset-0">
+                  <Image src={c.before} alt={c.beforeLabel} fittingType="fill" className="h-full w-full object-cover" />
+                </motion.div>
+              </div>
+            ))}
 
             {/* Labels */}
-            <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-foreground/70 px-3 py-1 text-xs font-medium text-background backdrop-blur-sm">
+            <span className="pointer-events-none absolute left-4 top-4 z-20 rounded-full bg-foreground/70 px-3 py-1 text-xs font-medium text-background backdrop-blur-sm">
               {active.beforeLabel}
             </span>
-            <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-accent/90 px-3 py-1 text-xs font-medium text-accent-foreground backdrop-blur-sm">
+            <span className="pointer-events-none absolute right-4 top-4 z-20 rounded-full bg-accent/90 px-3 py-1 text-xs font-medium text-accent-foreground backdrop-blur-sm">
               {active.afterLabel}
             </span>
 
